@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const port =  process.env.PORT || 80
-var sequelize = require('./products-api_conn.js');
+const port =  process.env.PORT || 3000
+var sequelize = require('./definitions.js');
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
