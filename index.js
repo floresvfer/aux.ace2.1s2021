@@ -4,7 +4,7 @@ const port = process.env.PORT || 80
 
 
 //Models
-const sequelize = require('./definitions.js');
+const sequelize = require('./conn');
 
 //Enable CORS
 const cors = require('cors');
@@ -12,7 +12,7 @@ app.use(cors());
 
 
 //Routes Definitions
-const productsRouter = require('./api-routes-products.js');
+const productsRouter = require('./api-routes/products');
 app.use('/products', productsRouter);
 
 

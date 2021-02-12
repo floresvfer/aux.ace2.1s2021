@@ -1,5 +1,5 @@
 const express = require('express');
-const { models } = require('./definitions.js');
+const { models } = require('../conn');
 const router = express.Router();
 
 /* GET users listing. */
