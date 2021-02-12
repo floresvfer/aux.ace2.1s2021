@@ -1,7 +1,17 @@
 const express = require('express')
 const app = express()
-const port =  process.env.PORT || 3000
+const port =  process.env.PORT || 80
+
+
 var sequelize = require('./definitions.js');
+var cors = require('cors');
+
+const productsRouter = require('./api-routes-products.js');
+
+
+app.use(cors());
+
+app.use('/products', productsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
