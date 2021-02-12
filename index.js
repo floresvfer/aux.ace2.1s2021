@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 const productsRouter = require('./api-routes/products');
 app.use('/products', productsRouter);
 
+const usersRouter = require('./api-routes/users');
+app.use('/users', usersRouter);
+
 
 //Index page
 app.get('/', (req, res) => {
