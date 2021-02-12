@@ -1,41 +1,43 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const port =  process.env.PORT || 80
 
 
-var sequelize = require('./definitions.js');
-var cors = require('cors');
+//Models
+const sequelize = require('./definitions.js');
 
-const productsRouter = require('./api-routes-products.js');
-
-
+//Enable CORS
+const cors = require('cors');
 app.use(cors());
 
+
+//Routes Definitions
+const productsRouter = require('./api-routes-products.js');
 app.use('/products', productsRouter);
 
+
+//Index page
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
 
-
-
+//Intitializing
 assertDatabaseConnectionOk()
     .then(() => {
-      console.log('syncing...')
+      console.log('syncing...');
       return sequelize.sync({ alter: true });
     })
     .then(() => {
-      console.log('database ok.')
-      /*server.listen(port);
-      server.on('error', onError);
-      server.on('listening', onListening);*/
+      console.log('database ok.');
         app.listen(port, () => {
           console.log(`Example app listening at http://localhost:${port}`)
         });
     });
 
 
+
+//Utils
 async function assertDatabaseConnectionOk() {
   console.log(`Checking database connection...`);
   try {
