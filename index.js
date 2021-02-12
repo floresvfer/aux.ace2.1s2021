@@ -10,6 +10,11 @@ const sequelize = require('./conn');
 const cors = require('cors');
 app.use(cors());
 
+//Enable to add Json body
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+
 
 //Routes Definitions
 const productsRouter = require('./api-routes/products');
